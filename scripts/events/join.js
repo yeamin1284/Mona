@@ -112,7 +112,19 @@ https://www.facebook.com/www.xnxx.com169
           'https://i.imgur.com/V5L9dPi.jpeg',
           'https://i.imgur.com/M7HEAMA.jpeg'
         ]
-        let background = (await axios.get(encodeURI(`${ok[Math.floor(Math.random() * ok.length)]}`), { responseType: "arraybuffer", })).data;
+        let background = await new Promise((resolve, reject) => {
+          request.get(
+            encodeURI(`${ok[Math.floor(Math.random() * ok.length)]}`),
+            { encoding: null },
+            (error, response, body) => {
+              if (error) {
+                reject(error);
+              } else {
+                resolve(body);
+              }
+            }
+          );
+        });
         fs.writeFileSync(pathAva, Buffer.from(avtAnime, "utf-8"));
         fs.writeFileSync(pathImg, Buffer.from(background, "utf-8"));
         var avatar = await this.circle(pathAva);
