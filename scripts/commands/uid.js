@@ -1,5 +1,6 @@
 module.exports.config = {
 	name: "uid",
+	aliases: ["getuid"],
 	version: "1.0.0",
 	permission: 0,
 	credits: "Nayan",
@@ -32,11 +33,9 @@ const fs = global.nodemodule["fs-extra"];
     else {
 	if (args[0].indexOf(".com/")!==-1) {
     const res_ID = await api.getUID(args[0]);
-   var name = data.name
-var data = await api.getUserInfoV2(res_ID);
-    var username = data.username
-    var link = data.link
-    var callback = () => api.sendMessage({body:`=== [ 𝗨𝗜𝗗 𝗨𝗦𝗘𝗥 ] ====\n━━━━━━━━━━━━━━━━━━\n[ ▶️]➜ 𝗜𝗗: ${res_ID}\n[ ▶️]➜ 𝗜𝗕: m.me/${res_ID}\n[ ▶️]➜ 𝗟𝗶𝗻𝗸𝗳𝗯: ${link}\n━━━━━━━━━━━━━━━━━━`, attachment: fs.createReadStream(__dirname + "/cache/1.png")}, event.threadID,
+    
+    
+    var callback = () => api.sendMessage({body:`=== [ 𝗨𝗜𝗗 𝗨𝗦𝗘𝗥 ] ====\n━━━━━━━━━━━━━━━━━━\n[ ▶️]➜ 𝗜𝗗: ${res_ID}\n[ ▶️]➜ 𝗜𝗕: m.me/${res_ID}\n[ ▶️]➜ 𝗟𝗶𝗻𝗸𝗳𝗯: https://www.facebook.com/profile.php?id=${res_ID}\n━━━━━━━━━━━━━━━━━━`, attachment: fs.createReadStream(__dirname + "/cache/1.png")}, event.threadID,
         () => fs.unlinkSync(__dirname + "/cache/1.png"),event.messageID); 
     return request(encodeURI(`https://graph.facebook.com/${res_ID}/picture?height=1500&width=1500&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`)).pipe(fs.createWriteStream(__dirname+'/cache/1.png')).on('close',
         () => callback()); }
