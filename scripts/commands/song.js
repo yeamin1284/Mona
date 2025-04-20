@@ -24,7 +24,7 @@ async function downloadMusicFromYoutube(link, path) {
         response.data.pipe(writeStream)
           .on('finish', async () => {
             try {
-              const info = await axios.get("http://91.227.114.96:8053/nayan/yt?url="+link);
+              const info = await axios.get(api+"/nayan/yt?url="+link);
               const result = {
                 title: info.data.data.title,
                 timestart: timestart
