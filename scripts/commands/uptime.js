@@ -76,8 +76,14 @@ const time = process.uptime() ,
   const Canvas = require('canvas');
     let pathImg = __dirname + `/nayan/avatar_1111231.png`;
     let pathAva = __dirname + `/nayan/avatar_3dsc11.png`;
-    let background = (await axios.get(encodeURI((loz[Math.floor(Math.random() * loz.length)])), { responseType: "arraybuffer" })).data;
-    fs.writeFileSync(pathImg, Buffer.from(background, "utf-8"));
+    let url = encodeURI(loz[Math.floor(Math.random() * loz.length)]);
+request({ url, encoding: null }, (err, res, body) => {
+  if (!err && res.statusCode === 200) {
+    fs.writeFileSync(pathImg, body);
+  } else {
+    console.error("Failed to download image:", err || res.statusCode);
+  }
+});
     let ava = (await axios.get(encodeURI(`${lengthchar[id - 1].imgAnime}`), { responseType: "arraybuffer" })).data;
     fs.writeFileSync(pathAva, Buffer.from(ava, "utf-8"));
     const request = require('request');
