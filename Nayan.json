@@ -9,7 +9,7 @@
   "saveState": true,
   "banMsg": false,
   "adminOnlyMsg": false,
-  "BOTNAME": "nayan-bot",
+  "BOTNAME": "yeamin",
   "PREFIX": "/",
   "react": "☠️",
   "OPERATOR": [
@@ -17,7 +17,7 @@
     "100000959749712"
   ],
   "ADMINBOT": [
-    "100000959749712",
+    "100088191360533",
     ""
   ],
   "OWNER": ["100000959749712"], 
